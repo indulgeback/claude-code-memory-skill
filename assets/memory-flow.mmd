@@ -1,0 +1,8 @@
+flowchart TD
+    A["Conversation"] --> B["Session summary"]
+    A --> C["Review pass"]
+    C --> D["Durable memory"]
+    C --> E["Instruction file"]
+    B --> F["Resume / compaction"]
+    D --> G["Future sessions"]
+    E --> G

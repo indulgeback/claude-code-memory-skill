@@ -1,0 +1,4 @@
+interface:
+  display_name: "Layered Memory"
+  short_description: "Set up and run a 3-layer memory workflow for coding agents"
+  default_prompt: "Set up or maintain layered memory for this project, including session memory, durable memory, and promotion into the host instruction file."
