@@ -8,6 +8,15 @@ This repo packages the practical memory pattern people care about when they talk
 - session memory for active work continuity
 - durable memory for facts worth carrying across conversations
 
+If you searched for:
+
+- `claude code memory`
+- `claude code layered memory`
+- `claude md memory workflow`
+- `how claude code remembers context`
+
+this is the open implementation you probably wanted.
+
 It gives an agent three distinct memory lanes:
 
 1. Instruction memory for durable rules
@@ -15,6 +24,10 @@ It gives an agent three distinct memory lanes:
 3. Durable memory for facts worth carrying across conversations
 
 The goal is simple: keep the main prompt lean, preserve the right context, and avoid turning every conversation into a total reset.
+
+## In one sentence
+
+This repository turns the Claude Code style memory pattern into a reusable skill you can install, inspect, and adapt.
 
 ## What this repo is
 
@@ -29,6 +42,16 @@ This repo is not:
 - an official Anthropic repository
 - a verbatim copy of proprietary system prompts
 - a claim that Claude Code uses these exact words
+
+## Claude Code architecture -> this repo
+
+| Claude Code style concept | What this repo gives you |
+|---|---|
+| `CLAUDE.md` rule layer | instruction memory workflow |
+| current thread continuity | session memory template |
+| long-lived memory files | durable indexed memory layout |
+| memory cleanup and promotion | review workflow in `SKILL.md` |
+| practical repo usage | installable examples and references |
 
 ## Why people look for Claude Code memory
 
@@ -65,6 +88,14 @@ That makes memory easier to maintain, safer to trust, and cheaper to keep in pro
 - A memory review and promotion workflow
 - Example files you can copy into your own setup
 
+## Quick start
+
+1. Put this repo in your skills directory
+2. Create `.agent-memory/` in the target project
+3. Map your rule layer to `CLAUDE.md`, `CLAUDE.local.md`, `AGENTS.md`, or another instruction file
+4. Keep active work in `.agent-memory/session/summary.md`
+5. Store reusable facts as indexed topic files under `.agent-memory/`
+
 ## Why this is relevant to Claude Code users
 
 If you already use Claude Code, this repo maps naturally onto the way people structure memory around it:
@@ -87,6 +118,16 @@ flowchart TD
     D --> G["Future conversations"]
     E --> G
 ```
+
+## What makes the pattern work
+
+The separation matters more than the wording:
+
+- instruction memory answers: "how should the agent behave here?"
+- session memory answers: "what is happening right now?"
+- durable memory answers: "what should still be known next week?"
+
+When those answers live in one file, the agent gets noisier. When they live in separate layers, the memory is easier to maintain and easier to trust.
 
 ### 1. Instruction layer
 
@@ -173,6 +214,13 @@ Then adapt the file paths to your agent runtime.
 
 `MEMORY.md` should stay lightweight. Use it as an index that points to topic files rather than a dumping ground.
 
+## Who this is for
+
+- Claude Code users who want a more explicit memory layout
+- people building Codex, Cursor, or custom repo agents
+- teams experimenting with durable memory for coding workflows
+- anyone trying to recreate the useful part of Claude Code memory without relying on prompt dumps
+
 ## Promotion rules
 
 Promote something into the instruction layer only when it is:
@@ -212,6 +260,12 @@ The important thing here is the workflow, not any single leaked phrase:
 - save only durable, non-derivable facts into long-term memory
 
 That is the part worth reusing.
+
+## Star this repo if
+
+- you want Claude Code style memory in an open form
+- you think coding agents need better memory hygiene
+- you want a concrete starting point instead of vague prompt advice
 
 ## FAQ
 
