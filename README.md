@@ -1,6 +1,12 @@
-# Layered Memory Skill
+# Claude Code Memory Skill
 
-An open-source, clean-room skill for running a layered memory workflow in coding agents.
+A clean-room layered memory workflow reconstructed from public analysis of Claude Code's memory architecture.
+
+This repo packages the practical memory pattern people care about when they talk about Claude Code memory:
+
+- instruction memory through `CLAUDE.md`-style rules
+- session memory for active work continuity
+- durable memory for facts worth carrying across conversations
 
 It gives an agent three distinct memory lanes:
 
@@ -9,6 +15,32 @@ It gives an agent three distinct memory lanes:
 3. Durable memory for facts worth carrying across conversations
 
 The goal is simple: keep the main prompt lean, preserve the right context, and avoid turning every conversation into a total reset.
+
+## What this repo is
+
+This repo is:
+
+- a reusable skill for Claude Code style layered memory
+- a clean-room reconstruction of the pattern, not a prompt dump
+- a practical way to bring `CLAUDE.md` rules, session continuity, and durable memory into one workflow
+
+This repo is not:
+
+- an official Anthropic repository
+- a verbatim copy of proprietary system prompts
+- a claim that Claude Code uses these exact words
+
+## Why people look for Claude Code memory
+
+The interest around Claude Code memory is not really about one prompt. It is about the architecture:
+
+- rules belong in instruction files
+- active work belongs in a session summary
+- reusable, non-derivable facts belong in durable memory
+
+That separation is what makes a coding agent feel coherent over time.
+
+This repository turns that idea into an installable skill and a portable repo structure.
 
 ## Why this exists
 
@@ -33,6 +65,16 @@ That makes memory easier to maintain, safer to trust, and cheaper to keep in pro
 - A memory review and promotion workflow
 - Example files you can copy into your own setup
 
+## Why this is relevant to Claude Code users
+
+If you already use Claude Code, this repo maps naturally onto the way people structure memory around it:
+
+- instruction layer -> `CLAUDE.md` and `CLAUDE.local.md`
+- session layer -> a repo-local running summary
+- durable layer -> indexed memory topic files
+
+If you use another coding agent, the same pattern still works. Only the host instruction file changes.
+
 ## Memory model
 
 ```mermaid
@@ -55,9 +97,13 @@ This is where stable rules belong:
 - approval boundaries
 - testing and release expectations
 
-Map this layer to whatever your host tool already uses:
+For Claude Code users, this usually means:
 
 - `CLAUDE.md`
+- `CLAUDE.local.md`
+
+For other tools, map this layer to whatever instruction file you already use:
+
 - `AGENTS.md`
 - `.github/copilot-instructions.md`
 - project-level system prompt files
@@ -88,7 +134,7 @@ This skill uses four durable memory types:
 
 ## Install
 
-### As a Codex skill
+### As a Claude Code or Codex skill
 
 Clone this repo into your skills directory:
 
@@ -155,17 +201,27 @@ Keep something only in session memory when it is:
 - Durable style memory: [examples/persistent-memory/testing-policy.md](./examples/persistent-memory/testing-policy.md)
 - Session summary: [examples/session-memory/summary.md](./examples/session-memory/summary.md)
 
-## Clean-room note
+## Reconstructed from public analysis
 
-This repository is an original implementation of a layered memory workflow. It does not reproduce proprietary prompt text. It is designed to capture the general pattern that modern coding agents use: separate rules, working memory, and long-lived memory so each layer stays useful.
+This repository was designed from public analysis of layered memory behavior discussed around Claude Code and similar coding agents, then rewritten into an original, reusable skill.
 
-If you came here looking for the memory ideas discussed around Claude Code, this repo is the safe, reusable, open version of that pattern rather than a prompt dump.
+The important thing here is the workflow, not any single leaked phrase:
+
+- route stable rules into instruction files
+- keep active work in session memory
+- save only durable, non-derivable facts into long-term memory
+
+That is the part worth reusing.
 
 ## FAQ
 
 ### Is this a copy of Claude Code's internal prompt?
 
 No. This is a clean-room skill and repo design that captures the layered memory idea without reproducing proprietary prompt text.
+
+### Why call it Claude Code Memory Skill?
+
+Because the intended audience is people trying to recreate the layered memory workflow associated with Claude Code in a reusable, open form. The repo is named for compatibility and discoverability, not official affiliation.
 
 ### Why not keep everything in one big instruction file?
 

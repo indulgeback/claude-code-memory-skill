@@ -1,11 +1,11 @@
 ---
-name: "layered-memory"
-description: "Use when you want to set up, maintain, or review a layered memory workflow for a coding agent, including session memory, durable memory, and promotion into a host instruction file such as CLAUDE.md or AGENTS.md."
+name: "claude-code-memory"
+description: "Use when you want to set up, maintain, or review a Claude Code style layered memory workflow, including `CLAUDE.md` rules, session memory, durable memory, and promotion of stable learnings into instruction files."
 ---
 
 ## Overview
 
-Use this skill when the task involves memory design or memory hygiene for a coding agent.
+Use this skill when the task involves memory design or memory hygiene for Claude Code or a similar coding agent.
 
 This skill organizes memory into three layers:
 
@@ -17,13 +17,13 @@ The intent is to keep each layer narrow, useful, and easy to trust.
 
 ## Before you start
 
-- Identify the host tool's instruction file. Common examples: `CLAUDE.md`, `AGENTS.md`, or `.github/copilot-instructions.md`.
+- Identify the host tool's instruction file. For Claude Code this is usually `CLAUDE.md` or `CLAUDE.local.md`. Other common examples are `AGENTS.md` and `.github/copilot-instructions.md`.
 - Identify or create a repo-local durable memory directory. The default layout in this skill uses `.agent-memory/`.
 - Identify or create the session summary file at `.agent-memory/session/summary.md`.
 
 ## Layer 1: Instruction memory
 
-Treat the host instruction file as the rule layer.
+Treat the host instruction file as the rule layer. In Claude Code, this is the `CLAUDE.md` layer.
 
 Put information here only if it is:
 
@@ -194,7 +194,7 @@ Keep it only in session memory when it is tied to the present thread.
 
 When the user asks to review memory:
 
-1. Read the host instruction file
+1. Read the host instruction file such as `CLAUDE.md`
 2. Read `.agent-memory/MEMORY.md`
 3. Read the most relevant durable topic files
 4. Read `.agent-memory/session/summary.md` if current-thread context matters

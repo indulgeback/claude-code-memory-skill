@@ -1,4 +1,4 @@
 interface:
-  display_name: "Layered Memory"
-  short_description: "Set up and run a 3-layer memory workflow for coding agents"
-  default_prompt: "Set up or maintain layered memory for this project, including session memory, durable memory, and promotion into the host instruction file."
+  display_name: "Claude Code Memory"
+  short_description: "Recreate Claude Code style layered memory in your repo"
+  default_prompt: "Set up or maintain a Claude Code style layered memory workflow for this project, including CLAUDE.md rules, session memory, durable memory, and promotion review."
